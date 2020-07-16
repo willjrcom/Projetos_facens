@@ -1,0 +1,1 @@
+O selection sort procura o menor elemento no vetor e fica com ele salvo, ao final de cada verificação, inverte a posição do primeiro verificado com o menor valor. a cada verificação ele deixa de contar uma casa (j= i+1).

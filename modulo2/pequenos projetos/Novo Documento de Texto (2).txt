@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+//--------------------------------------------------------------------------------------
+int contar(char *texto)
+{
+	int cont =0;
+		
+	for(;*texto;texto++) cont++;
+	return cont;
+}
+//--------------------------------------------------------------------------------------
+void maiuscula(char *texto)
+{
+	for(;*texto;texto++)
+		if(*texto<=90 && *texto>=65)
+			*texto+=32;	
+}
+//--------------------------------------------------------------------------------------
+void trocar(char *nome, char *aux, char *troca, int t)
+{
+	int i,j,k;
+	
+	for(i=0; i<t; i++, troca++, nome++)
+	{
+		
+		*troca= *aux+=1;
+		
+		for(j=0; j<t+i; j++)
+		{	
+			if( *(aux+j) == *troca && j!=i)
+			{
+				*troca+=1;
+				j=0; 
+			}
+		}
+		*troca=*aux;
+		*(aux+t+i+1)= *troca;
+	}
+	
+	
+}
+//--------------------------------------------------------------------------------------
+void passarstring(char *nome, char *aux)
+{
+	for(; *nome;nome++,aux++) *aux=*nome;
+}
+int main()
+{
+	char nome[20], aux[40], troca[20];
+	int t;
+	printf("Digite o nome: ");
+	scanf("%s", &nome);
+	
+	t=contar(nome);
+	maiuscula(nome);
+	passarstring(nome,aux);
+	
+	printf("\naux: %s\n",aux);
+	
+	trocar(nome,aux,troca,t);
+	
+	printf("nome: %s \nTotal :%i\nTroca: %s",nome, t,troca);
+	
+	return 0;
+}
